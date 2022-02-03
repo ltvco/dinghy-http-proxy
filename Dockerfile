@@ -1,6 +1,7 @@
-FROM golang:1.15 as builder
+FROM golang:1.16 as builder
 WORKDIR /go/src/github.com/codekitchen/dinghy-http-proxy
 COPY join-networks.go .
+COPY go.mod .
 RUN GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go get -v github.com/fsouza/go-dockerclient
 RUN GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -v -o join-networks
 
