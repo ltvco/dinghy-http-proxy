@@ -1,6 +1,6 @@
 # Dinghy HTTP Proxy
 
-[![Docker Automated build](https://img.shields.io/docker/automated/codekitchen/dinghy-http-proxy.svg)](https://hub.docker.com/r/codekitchen/dinghy-http-proxy/)
+### _NOTE: This has been forked to the `ltvco` organization to add arm64 support._
 
 This is the HTTP Proxy and DNS server that
 [Dinghy](https://github.com/codekitchen/dinghy) uses.
@@ -138,7 +138,7 @@ Then start the proxy:
       -p 80:80 -p 443:443 -p 19322:19322/udp \
       -e DNS_IP=<vm_ip> -e CONTAINER_NAME=http-proxy \
       --name http-proxy \
-      codekitchen/dinghy-http-proxy
+      ltvco/dinghy-http-proxy
 
 You will also need to configure OS X to use the DNS resolver. To do this, create
 a file `/etc/resolver/docker` (creating the `/etc/resolver` directory if it does
@@ -163,7 +163,7 @@ the proxy:
       -p 80:80 -p 443:443 -p 19322:19322/udp \
       -e CONTAINER_NAME=http-proxy \
       --name http-proxy \
-      codekitchen/dinghy-http-proxy
+      ltvco/dinghy-http-proxy
 
 The `DNS_IP` environment variable is not necessary when Docker is running
 directly on the host, as it defaults to `127.0.0.1`.
@@ -184,7 +184,7 @@ docker run -d --restart=always `
   -e CONTAINER_NAME=http-proxy `
   -e DNS_IP=127.0.0.1 `
   --name http-proxy `
-  codekitchen/dinghy-http-proxy
+  ltvco/dinghy-http-proxy
 ```
 
 From docker-compose:
@@ -194,7 +194,7 @@ services:
 
   http-proxy:
     container_name: http-proxy
-    image: codekitchen/dinghy-http-proxy
+    image: ltvco/dinghy-http-proxy
     environment:
       - DNS_IP=127.0.0.1
       - CONTAINER_NAME=http-proxy
